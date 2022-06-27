@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Shootable
+  - Spawner
   layers:
   - Default
   - TransparentFX
