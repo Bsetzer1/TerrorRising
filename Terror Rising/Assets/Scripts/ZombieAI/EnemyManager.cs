@@ -31,8 +31,8 @@ public class EnemyManager : MonoBehaviour
 
     void SpawnNewEnemy()
     {
-        xPos = Random.Range(-25, 20);
-        zPos = Random.Range(12, 50);
+        xPos = Random.Range(-25, 16);
+        zPos = Random.Range(10, 40);
         Instantiate(m_EnemyPrefab, new Vector3(xPos,0,zPos), Quaternion.identity);
         //m_SpawnPoints[0].transform.position
         count++;

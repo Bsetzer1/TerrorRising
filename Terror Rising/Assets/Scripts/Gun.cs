@@ -11,6 +11,7 @@ public class Gun : MonoBehaviour
     public float ClipSize = 30;
     public float AmmoCount = 30;
     public float ReserveAmmo = 220;
+    public float MaxAmmo = 220;
     public float NoAmmoDis = 0;
     public Text AmmoDisplayC;
     public Text AmmoDisplayR;
