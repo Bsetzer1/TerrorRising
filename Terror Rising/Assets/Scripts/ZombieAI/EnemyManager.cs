@@ -9,6 +9,8 @@ public class EnemyManager : MonoBehaviour
     public int count;
     public int KillCount;
     public int MaxZombieSpawn = 10;
+    public int xPos, zPos;
+    public GameController Round;
 
     // Start is called before the first frame update
 
@@ -20,6 +22,7 @@ public class EnemyManager : MonoBehaviour
         }
         if (KillCount == MaxZombieSpawn)
         {
+            Round.round += 1;
             KillCount = 0;
             count = 0;
             MaxZombieSpawn = MaxZombieSpawn + 5;
@@ -28,7 +31,10 @@ public class EnemyManager : MonoBehaviour
 
     void SpawnNewEnemy()
     {
-        Instantiate(m_EnemyPrefab, m_SpawnPoints[0].transform.position, Quaternion.identity);
+        xPos = Random.Range(-25, 20);
+        zPos = Random.Range(12, 50);
+        Instantiate(m_EnemyPrefab, new Vector3(xPos,0,zPos), Quaternion.identity);
+        //m_SpawnPoints[0].transform.position
         count++;
     }
 }

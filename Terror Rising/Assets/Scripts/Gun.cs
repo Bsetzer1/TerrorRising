@@ -1,6 +1,7 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class Gun : MonoBehaviour
 {
@@ -13,12 +14,19 @@ public class Gun : MonoBehaviour
     public float NoAmmoDis = 0;
     public Text AmmoDisplayC;
     public Text AmmoDisplayR;
+    public AudioSource shootingSound;
+    public AudioSource reloadSound;
 
     public Camera fpsCam;
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
 
     private float nextTimeToFire = 0f;
+
+    void Start()
+    {
+
+    }
 
 
     // Update is called once per frame
@@ -38,6 +46,7 @@ public class Gun : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.R) && ReserveAmmo != 0)
         {
+            reloadSound.Play();
             if(ReserveAmmo < ClipSize)
             {
                 AmmoCount = ReserveAmmo;
@@ -57,7 +66,7 @@ public class Gun : MonoBehaviour
     void Shoot()
     {
         muzzleFlash.Play();
-
+        shootingSound.Play();
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {

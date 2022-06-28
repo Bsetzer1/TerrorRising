@@ -8,6 +8,9 @@ public class PlayerHealth : MonoBehaviour
     public float maxHealth = 100;
     public float currentHealth;
     public float HealthPerSec;
+    public GameOverScreen GameOverScreen;
+    public GameController points;
+    public bool GameOver = false;
 
     public HealthBar healthBar;
     // Start is called before the first frame update
@@ -28,7 +31,9 @@ public class PlayerHealth : MonoBehaviour
         }
         if(currentHealth <= 0)
         {
+            GameOver = true;
             Destroy(gameObject);
+            GameOverScreen.Setup(points.SetPoints);
         }
         healthBar.slider.value = currentHealth;
     }
